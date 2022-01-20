@@ -9,6 +9,10 @@ import Button from '@mui/material/Button';
 
 export default function PorjectCard(props) {
     const name = props.project.properties.title.title[0].plain_text;
+    const description = props.project.properties.description.rich_text[0].plain_text;
+    // const github;
+    // const deploy;
+    console.log(description)
     return (
         <Grid item key={props.project.id} xs={12} sm={6} md={4}>
                 <Card
@@ -28,13 +32,12 @@ export default function PorjectCard(props) {
                       {name}
                     </Typography>
                     <Typography>
-                      This is a media card. You can use this section to describe the
-                      content.
+                      {description}
                     </Typography>
                   </CardContent>
                   <CardActions>
-                    <Button size="small">View</Button>
-                    <Button size="small">Edit</Button>
+                    <Button size="small">Github</Button>
+                    <Button size="small">Deploy</Button>
                   </CardActions>
                 </Card>
               </Grid>
