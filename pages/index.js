@@ -1,10 +1,6 @@
 import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Button from '@mui/material/Button';
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
 import CssBaseline from '@mui/material/CssBaseline';
 import Grid from '@mui/material/Grid';
 import Stack from '@mui/material/Stack';
@@ -14,12 +10,14 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import ProjectCard from '../components/ProjectCard';
+import { Client } from '@notionhq/client';
 
 const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 const theme = createTheme();
 
-export default function Album() {
+export default function Album({ results}) {
+    console.log(results)
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -67,8 +65,8 @@ export default function Album() {
         <Container sx={{ py: 8 }} maxWidth="md">
           {/* End hero unit */}
           <Grid container spacing={4}>
-            {cards.map((card) => (
-              <ProjectCard card={card}/>
+            {results.map((project) => (
+              <ProjectCard project={project}/>
             ))}
           </Grid>
         </Container>
@@ -90,4 +88,17 @@ export default function Album() {
       {/* End footer */}
     </ThemeProvider>
   );
+}
+
+export async function getStaticProps() {
+    require('dotenv').config();
+    const notion = new Client({ auth: process.env.NOTION_API_KEY})
+    const databaseID = process.env.NOTION_DATABASE_ID;
+    const res = await notion.databases.query({
+        database_id: databaseID,
+    })
+    console.log(res.results)
+    return {props: {
+        results: res.results
+    }}
 }

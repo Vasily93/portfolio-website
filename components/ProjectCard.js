@@ -8,8 +8,9 @@ import Button from '@mui/material/Button';
 
 
 export default function PorjectCard(props) {
+    const name = props.project.properties.title.title[0].plain_text;
     return (
-        <Grid item key={props.card} xs={12} sm={6} md={4}>
+        <Grid item key={props.project.id} xs={12} sm={6} md={4}>
                 <Card
                   sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
                 >
@@ -24,7 +25,7 @@ export default function PorjectCard(props) {
                   />
                   <CardContent sx={{ flexGrow: 1 }}>
                     <Typography gutterBottom variant="h5" component="h2">
-                      Heading
+                      {name}
                     </Typography>
                     <Typography>
                       This is a media card. You can use this section to describe the
