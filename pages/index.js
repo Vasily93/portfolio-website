@@ -12,12 +12,10 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import ProjectCard from '../components/ProjectCard';
 import { Client } from '@notionhq/client';
 
-const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-
 const theme = createTheme();
 
 export default function Album({ results}) {
-    console.log(results)
+    console.log(results[0])
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -97,7 +95,6 @@ export async function getStaticProps() {
     const res = await notion.databases.query({
         database_id: databaseID,
     })
-    console.log(res.results)
     return {props: {
         results: res.results
     }}

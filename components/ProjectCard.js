@@ -11,34 +11,29 @@ export default function PorjectCard(props) {
     const description = props.project.properties.description.rich_text[0].plain_text;
     const github = props.project.properties.github.rich_text[0].plain_text;
     const deployLink = props.project.properties.deploy.rich_text[0].plain_text;
-    console.log(github, deployLink)
+    const cover = props.project.cover.file.url;
     return (
-        <Grid item key={props.project.id} xs={12} sm={6} md={4}>
-                <Card
-                  sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
-                >
-                  <CardMedia
+        <Grid item key={props.project.id}  xs={12} sm={6} md={4}>
+            <Card sx={{ maxWidth: 345, minHeight: 345 }}>
+                <CardMedia
                     component="img"
-                    sx={{
-                      // 16:9
-                      pt: '56.25%',
-                    }}
-                    image="https://source.unsplash.com/random"
-                    alt="random"
-                  />
-                  <CardContent sx={{ flexGrow: 1 }}>
-                    <Typography gutterBottom variant="h5" component="h2">
-                      {name}
+                    height="140"
+                    image={cover}
+                    alt="green iguana"
+                />
+                <CardContent>
+                    <Typography gutterBottom variant="h5" component="div">
+                    {name}
                     </Typography>
-                    <Typography>
-                      {description}
+                    <Typography variant="body2" color="text.secondary">
+                    {description}
                     </Typography>
-                  </CardContent>
-                  <CardActions>
+                </CardContent>
+                <CardActions>
                     <Button size="small"><a href={github}>Github</a></Button>
                     <Button size="small"><a href={deployLink}>Deploy</a></Button>
-                  </CardActions>
-                </Card>
-              </Grid>
+                </CardActions>
+            </Card>
+        </Grid>
     )
 }
