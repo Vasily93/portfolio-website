@@ -6,13 +6,12 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 
-
 export default function PorjectCard(props) {
     const name = props.project.properties.title.title[0].plain_text;
     const description = props.project.properties.description.rich_text[0].plain_text;
-    // const github;
-    // const deploy;
-    console.log(description)
+    const github = props.project.properties.github.rich_text[0].plain_text;
+    const deployLink = props.project.properties.deploy.rich_text[0].plain_text;
+    console.log(github, deployLink)
     return (
         <Grid item key={props.project.id} xs={12} sm={6} md={4}>
                 <Card
@@ -36,8 +35,8 @@ export default function PorjectCard(props) {
                     </Typography>
                   </CardContent>
                   <CardActions>
-                    <Button size="small">Github</Button>
-                    <Button size="small">Deploy</Button>
+                    <Button size="small"><a href={github}>Github</a></Button>
+                    <Button size="small"><a href={deployLink}>Deploy</a></Button>
                   </CardActions>
                 </Card>
               </Grid>
