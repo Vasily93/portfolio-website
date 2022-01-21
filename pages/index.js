@@ -1,33 +1,18 @@
 import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
 import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
 import Grid from '@mui/material/Grid';
 import Stack from '@mui/material/Stack';
 import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
 import ProjectCard from '../components/ProjectCard';
 import { Client } from '@notionhq/client';
+import Link from 'next/link';
 
-const theme = createTheme();
 
 export default function Album({ results}) {
-    console.log(results[0])
   return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <AppBar position="relative">
-        <Toolbar>
-          <Typography variant="h6" color="inherit" noWrap>
-            Vasily Markov
-          </Typography>
-        </Toolbar>
-      </AppBar>
       <main>
-        {/* Hero unit */}
         <Box
           sx={{
             bgcolor: 'background.paper',
@@ -46,7 +31,7 @@ export default function Album({ results}) {
               Vasily Markov
             </Typography>
             <Typography variant="h5" align="center" color="text.secondary" paragraph>
-              I am a Front End Javascript Developer. React Oriented. Open for oppotunities!
+              I am Front End Javascript Web Developer. React Oriented. Open for oppotunities!
               Check out my latest projects below.
             </Typography>
             <Stack
@@ -55,8 +40,12 @@ export default function Album({ results}) {
               spacing={2}
               justifyContent="center"
             >
-              <Button variant="contained">Main call to action</Button>
-              <Button variant="outlined">Secondary action</Button>
+              <Link href='/resume'>
+                <Button variant="contained">My Resume</Button>
+              </Link>
+              <Link href='/contact'>
+                <Button variant="outlined">Send Me an Email</Button>
+              </Link>
             </Stack>
           </Container>
         </Box>
@@ -69,22 +58,6 @@ export default function Album({ results}) {
           </Grid>
         </Container>
       </main>
-      {/* Footer */}
-      <Box sx={{ bgcolor: 'background.paper', p: 6 }} component="footer">
-        <Typography variant="h6" align="center" gutterBottom>
-          Footer
-        </Typography>
-        <Typography
-          variant="subtitle1"
-          align="center"
-          color="text.secondary"
-          component="p"
-        >
-          Something here to give the footer a purpose!
-        </Typography>
-      </Box>
-      {/* End footer */}
-    </ThemeProvider>
   );
 }
 
