@@ -68,6 +68,13 @@ export async function getStaticProps() {
     const res = await notion.databases.query({
         database_id: databaseID,
     })
+    const contactsDB_id = process.env.contactsDB;
+    console.log(contactsDB_id)
+    const contacts = await notion.databases.list()
+    const response  = await notion.databases.query({
+        database_id: contactsDB_id
+    })
+    console.log(response.results[2].properties.message.rich_text)
     return {props: {
         results: res.results
     }}
