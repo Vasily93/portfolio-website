@@ -17,7 +17,7 @@ const EmailForm = () => {
             url: 'http://localhost:3000/api/contact',
             headers: {
                 'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin' : 'https://youthful-hermann-87c69c.netlify.app'
+                'Access-Control-Allow-Origin' : '*'
             },
             data: {subject, email, phone, message}
         }

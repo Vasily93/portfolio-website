@@ -1,7 +1,26 @@
 import { Client } from '@notionhq/client';
+import Cors from 'cors';
 
-export default (req, res) => {
+const cors = Cors({
+    methods: ['POST']
+})
+
+function runMiddleware(req, res, fn) {
+    return new Promise((resolve, reject) => {
+      fn(req, res, (result) => {
+        if (result instanceof Error) {
+          return reject(result)
+        }
+  
+        return resolve(result)
+      })
+    })
+  }
+
+async function handler(req, res) {
     const {subject, email, phone, message} = req.body;
+    await runMiddleware(req, res, cors)
+    
     const notion = new Client({ auth: process.env.NOTION_API_KEY})
     notion.pages.create({
         parent: {
@@ -30,5 +49,8 @@ export default (req, res) => {
             
         }
     })
+
     res.status(200).json(req.body)
 }
+
+export default handler;
