@@ -8,9 +8,9 @@ import Container from '@mui/material/Container';
 import ProjectCard from '../components/ProjectCard';
 import { Client } from '@notionhq/client';
 import Link from 'next/link';
+import CVModal from '../components/CVModal';
 
-
-export default function Album({ results}) {
+export default function Album({ results, cv }) {
   return (
       <main>
         <Box
@@ -40,12 +40,10 @@ export default function Album({ results}) {
               spacing={2}
               justifyContent="center"
             >
-              <Link href='/resume'>
-                <Button variant="contained">My Resume</Button>
-              </Link>
               <Link href='/contact'>
-                <Button variant="outlined">Send Me an Email</Button>
+                <Button variant="contained">Send Me an Email</Button>
               </Link>
+              <CVModal cv={cv}/>
             </Stack>
           </Container>
         </Box>
@@ -68,14 +66,13 @@ export async function getStaticProps() {
     const res = await notion.databases.query({
         database_id: databaseID,
     })
-    const contactsDB_id = process.env.contactsDB;
-    console.log(contactsDB_id)
-    const contacts = await notion.databases.list()
-    const response  = await notion.databases.query({
-        database_id: contactsDB_id
+    const cvPageID = process.env.cvPageID;
+    const response  = await notion.blocks.children.list({
+        block_id: cvPageID,
+        page_size: 1
     })
-    console.log(response.results[2].properties.message.rich_text)
     return {props: {
-        results: res.results
+        results: res.results,
+        cv: response.results[0].pdf.file.url
     }}
 }
