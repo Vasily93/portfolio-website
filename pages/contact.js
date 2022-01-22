@@ -12,12 +12,12 @@ const EmailForm = () => {
 
     async function handleSubmit(e) {
         e.preventDefault();
-        console.log(subject, email, phone, message)
         let config = {
             method: 'post',
             url: 'http://localhost:3000/api/contact',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin' : 'https://youthful-hermann-87c69c.netlify.app'
             },
             data: {subject, email, phone, message}
         }
