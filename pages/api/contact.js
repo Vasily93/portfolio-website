@@ -1,9 +1,7 @@
 import { Client } from '@notionhq/client';
 import Cors from 'cors';
 
-const cors = Cors({
-    methods: ['POST']
-})
+const cors = Cors()
 
 function runMiddleware(req, res, fn) {
     return new Promise((resolve, reject) => {
