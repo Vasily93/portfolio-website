@@ -21,6 +21,7 @@ const EmailForm = () => {
         e.preventDefault();
         console.log('clicked')
         setOpen(true)
+        setResponse('in handleSubmit')
         let config = {
             method: 'post',
             url: 'http://localhost:3000/api/contact',
@@ -30,6 +31,7 @@ const EmailForm = () => {
             data: {subject, email, phone, message}
         }
         try {
+            setResponse('in try block before axios')
             const res = await axios(config);
             setResponse('Thank you for your message!')
             setOpen(true)
