@@ -24,7 +24,7 @@ const EmailForm = () => {
         setResponse('in handleSubmit')
         let config = {
             method: 'post',
-            url: 'https://vasilly-tet.netlify.app/contact',
+            url: 'https://vasilly-tet.netlify.app/api/contact',
             headers: {
                 'Content-Type': 'application/json',
             },
