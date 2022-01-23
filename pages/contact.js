@@ -19,6 +19,7 @@ const EmailForm = () => {
 
     async function handleSubmit(e) {
         e.preventDefault();
+        console.log('clicked')
         let config = {
             method: 'post',
             url: 'http://localhost:3000/api/contact',
@@ -75,9 +76,9 @@ const EmailForm = () => {
                             <TextField onChange={(e) => setEmail(e.target.value)} id="outlined-basic" label="Email" variant="outlined" />
                             <TextField onChange={(e) => setPhone(e.target.value)} id="outlined-basic" label="Phone" variant="outlined" />
                             <TextField onChange={(e) => setMessage(e.target.value)} id="outlined-basic" label="Your message" variant="outlined" multiline rows={5} />
-                            <button type='submit' 
+                            <Button variant="contained" align="center" 
                             onClick={handleSubmit} 
-                            >Submit Form</button>
+                            >Submit Form</Button>
                         </Stack>
                     </form>
                 </CardContent>
