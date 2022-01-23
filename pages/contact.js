@@ -75,9 +75,9 @@ const EmailForm = () => {
                             <TextField onChange={(e) => setEmail(e.target.value)} id="outlined-basic" label="Email" variant="outlined" />
                             <TextField onChange={(e) => setPhone(e.target.value)} id="outlined-basic" label="Phone" variant="outlined" />
                             <TextField onChange={(e) => setMessage(e.target.value)} id="outlined-basic" label="Your message" variant="outlined" multiline rows={5} />
-                            <Button variant="contained" align="center" 
+                            <button type='submit' 
                             onClick={handleSubmit} 
-                            >Submit Form</Button>
+                            >Submit Form</button>
                         </Stack>
                     </form>
                 </CardContent>
