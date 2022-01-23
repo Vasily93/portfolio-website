@@ -19,7 +19,7 @@ export default function PorjectCard(props) {
                     component="img"
                     height="140"
                     image={cover}
-                    alt="green iguana"
+                    alt={`${name} image`}
                 />
                 <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
@@ -30,8 +30,8 @@ export default function PorjectCard(props) {
                     </Typography>
                 </CardContent>
                 <CardActions>
-                    <Button size="small"><a href={github}>Github</a></Button>
-                    <Button size="small"><a href={deployLink}>Deploy</a></Button>
+                    <Button size="small"><a href={github} target='_blank'>Github</a></Button>
+                    <Button size="small"><a href={deployLink} target='_blank'>Deploy</a></Button>
                 </CardActions>
             </Card>
         </Grid>

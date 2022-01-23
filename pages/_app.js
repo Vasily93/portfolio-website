@@ -20,8 +20,16 @@ function MyApp({ Component, pageProps }) {
                         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                             Vasily Markov
                         </Typography>
-                        <Button color="inherit">Github</Button>
-                        <Button color="inherit">LinkedIn</Button>
+                        <Button color="inherit">
+                            <a href='https://github.com/Vasily93' target='_blank'>
+                                Github
+                            </a>
+                        </Button>
+                        <Button color="inherit">
+                            <a href='https://www.linkedin.com/in/vasily-markov/' target='_blank'>
+                                LinkedIn
+                            </a>
+                        </Button>
                         </Toolbar>
                     </AppBar>
                 </Box>
