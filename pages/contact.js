@@ -20,6 +20,7 @@ const EmailForm = () => {
     async function handleSubmit(e) {
         e.preventDefault();
         console.log('clicked')
+        setOpen(true)
         let config = {
             method: 'post',
             url: 'http://localhost:3000/api/contact',
