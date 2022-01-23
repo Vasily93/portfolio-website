@@ -20,7 +20,7 @@ async function handler(req, res) {
     await runMiddleware(req, res, cors)
     
     const notion = new Client({ auth: process.env.NOTION_API_KEY})
-    notion.pages.create({
+    const response = await notion.pages.create({
         parent: {
             database_id: process.env.contactsDB
         },
@@ -48,7 +48,7 @@ async function handler(req, res) {
         }
     })
 
-    res.status(200).json(req.body)
+    res.status(200).json(response)
 }
 
 export default handler;

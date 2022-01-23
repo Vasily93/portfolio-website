@@ -3,12 +3,19 @@ import Button from '@mui/material/Button';
 import { Card, CardContent, Container, Stack, TextField } from '@mui/material';
 import { useState } from 'react';
 import axios from 'axios';
+import Box from '@mui/material/Box';
+import Alert from '@mui/material/Alert';
+import IconButton from '@mui/material/IconButton';
+import Collapse from '@mui/material/Collapse';
 
 const EmailForm = () => {
     const [subject, setSubject] = useState('subject')
     const [email, setEmail] = useState('email')
     const [phone, setPhone] = useState('phone')
     const [message, setMessage] = useState('message')
+    const [response, setResponse] = useState('response')
+    const [open, setOpen] = useState(false);
+
 
     async function handleSubmit(e) {
         e.preventDefault();
@@ -17,15 +24,16 @@ const EmailForm = () => {
             url: 'http://localhost:3000/api/contact',
             headers: {
                 'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin' : '*'
             },
             data: {subject, email, phone, message}
         }
         try {
-            const response = await axios(config);
-            console.log(response)
+            const res = await axios(config);
+            setResponse('Thank you for your message!')
+            setOpen(true)
         } catch(err) {
-            console.error(err)
+            setResponse(`${err.response.statusText} : ${err.response.status}`)
+            setOpen(true)
         }
     }
     return(
@@ -37,6 +45,28 @@ const EmailForm = () => {
                 </Link>
             </Stack>
 
+            <Box sx={{ width: '100%' }}>
+                <Collapse in={open}>
+                    <Alert
+                    action={
+                        <IconButton
+                        aria-label="close"
+                        color="inherit"
+                        size="small"
+                        onClick={() => {
+                            setOpen(false);
+                        }}
+                        >
+                        X
+                        </IconButton>
+                    }
+                    sx={{ mb: 2 }}
+                    >
+                    {response}
+                    </Alert>
+                </Collapse>
+            </Box>
+
             <Card sx={{ maxWidth: "%100" }}>
                 <CardContent>
                     <form noValidate autoComplete="off" onSubmit={handleSubmit}>
@@ -45,7 +75,9 @@ const EmailForm = () => {
                             <TextField onChange={(e) => setEmail(e.target.value)} id="outlined-basic" label="Email" variant="outlined" />
                             <TextField onChange={(e) => setPhone(e.target.value)} id="outlined-basic" label="Phone" variant="outlined" />
                             <TextField onChange={(e) => setMessage(e.target.value)} id="outlined-basic" label="Your message" variant="outlined" multiline rows={5} />
-                            <Button variant="contained" align="center" onClick={handleSubmit}>Submit Form</Button>
+                            <Button variant="contained" align="center" 
+                            onClick={handleSubmit} 
+                            >Submit Form</Button>
                         </Stack>
                     </form>
                 </CardContent>
