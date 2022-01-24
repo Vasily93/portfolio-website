@@ -7,12 +7,12 @@ function PdfLoader() {
   const [pageNumber, setPageNumber] = useState(1);
   const pdf = '/vm.pdf';
 
-    useEffect(() => {
+  const changeStyle = () => {
         if(document.getElementsByClassName('react-pdf__Page__canvas')[0]) {
             const canvas = document.getElementsByClassName('react-pdf__Page__canvas')[0];
             canvas.setAttribute('style' ,  'user-select: none; width: 594px; height: 840px;')
         }
-    })
+    }
 
   function onDocumentLoadSuccess({ numPages }) {
     setNumPages(numPages);
@@ -24,7 +24,7 @@ function PdfLoader() {
         file={pdf}
         onLoadSuccess={onDocumentLoadSuccess}
       >
-        <Page  pageNumber={pageNumber}  style={{display: 'none' }}/>
+        <Page  pageNumber={pageNumber} onLoadSuccess={changeStyle} />
       </Document>
       <p>Page {pageNumber} of {numPages}</p>
     </Box>
