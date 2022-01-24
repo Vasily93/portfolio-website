@@ -66,13 +66,13 @@ export async function getStaticProps() {
     const res = await notion.databases.query({
         database_id: databaseID,
     })
-    const cvPageID = process.env.cvPageID;
-    const response  = await notion.blocks.children.list({
-        block_id: cvPageID,
-        page_size: 1
-    })
+    // const cvPageID = process.env.cvPageID;
+    // const response  = await notion.blocks.children.list({
+    //     block_id: cvPageID,
+    //     page_size: 1
+    // })
+    // console.log(response.results[0].pdf)
     return {props: {
         results: res.results,
-        cv: response.results[0].pdf.file.url
     }}
 }

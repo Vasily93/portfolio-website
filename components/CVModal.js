@@ -3,6 +3,7 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
+// import cvPdf from '../public/vm.pdf'
 
 const style = {
   position: 'absolute',
@@ -16,7 +17,7 @@ const style = {
   p: 4,
 };
 
-export default function BasicModal(props) {
+export default function BasicModal() {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -33,7 +34,7 @@ export default function BasicModal(props) {
           <Typography id="modal-modal-title" variant="h6" component="h2">
             My Resume
           </Typography>
-          <iframe src={props.cv} height='95%' width="95%"></iframe>
+          <iframe src='randomurl' height='95%' width="95%"></iframe>
         </Box>
       </Modal>
     </div>

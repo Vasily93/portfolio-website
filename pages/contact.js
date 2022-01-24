@@ -19,9 +19,6 @@ const EmailForm = () => {
 
     async function handleSubmit(e) {
         e.preventDefault();
-        console.log('clicked')
-        setOpen(true)
-        setResponse('in handleSubmit')
         let config = {
             method: 'post',
             url: 'https://vasilly-tet.netlify.app/api/contact',
@@ -31,7 +28,6 @@ const EmailForm = () => {
             data: {subject, email, phone, message}
         }
         try {
-            setResponse('in try block before axios')
             const res = await axios(config);
             setResponse('Thank you for your message!')
             setOpen(true)
@@ -42,12 +38,9 @@ const EmailForm = () => {
     }
     return(
         <Container>
-            <Stack sx={{ pt: 4 }} justifyContent="center"> 
-                {/* dont need to use Stack, need to find something else for sing component */}
                 <Link href='/'>
                     <Button variant="contained" align="center">Go back to Projects</Button>
                 </Link>
-            </Stack>
 
             <Box sx={{ width: '100%' }}>
                 <Collapse in={open}>

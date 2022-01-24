@@ -7,18 +7,19 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 
 export default function PorjectCard(props) {
+    const id = props.project.id;
     const name = props.project.properties.title.title[0].plain_text;
     const description = props.project.properties.description.rich_text[0].plain_text;
     const github = props.project.properties.github.rich_text[0].plain_text;
     const deployLink = props.project.properties.deploy.rich_text[0].plain_text;
-    const cover = props.project.cover.file.url;
+    // const cover = props.project.cover.file.url;
     return (
         <Grid item key={props.project.id}  xs={12} sm={6} md={4}>
             <Card sx={{ maxWidth: 345, minHeight: 345 }}>
                 <CardMedia
                     component="img"
                     height="140"
-                    image={cover}
+                    image={`/${id}.png`}
                     alt={`${name} image`}
                 />
                 <CardContent>
