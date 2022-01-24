@@ -10,6 +10,7 @@ import { Client } from '@notionhq/client';
 import Link from 'next/link';
 import CVModal from '../components/CVModal';
 
+
 export default function Album({ results, cv }) {
   return (
       <main>
@@ -35,7 +36,7 @@ export default function Album({ results, cv }) {
               Check out my latest projects below.
             </Typography>
             <Stack
-              sx={{ pt: 4 }}
+              sx={{ pt: 2 }}
               direction="row"
               spacing={2}
               justifyContent="center"
@@ -43,7 +44,10 @@ export default function Album({ results, cv }) {
               <Link href='/contact'>
                 <Button variant="contained">Send Me an Email</Button>
               </Link>
-              <CVModal cv={cv}/>
+              <Link href='/resume'>
+                <Button variant="contained">My Resume</Button>
+              </Link>
+              {/* <CVModal cv={cv}/> */}
             </Stack>
           </Container>
         </Box>

@@ -38,9 +38,13 @@ const EmailForm = () => {
     }
     return(
         <Container>
+            <Box sx={{marginTop: '10px'}}>
                 <Link href='/'>
-                    <Button variant="contained" align="center">Go back to Projects</Button>
+                        <Button variant="outlined">
+                            Go back to Projects
+                        </Button>
                 </Link>
+            </Box>
 
             <Box sx={{ width: '100%' }}>
                 <Collapse in={open}>
