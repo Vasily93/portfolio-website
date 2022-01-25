@@ -8,8 +8,6 @@ import Container from '@mui/material/Container';
 import ProjectCard from '../components/ProjectCard';
 import { Client } from '@notionhq/client';
 import Link from 'next/link';
-import CVModal from '../components/CVModal';
-
 
 export default function Album({ results, cv }) {
   return (
@@ -47,7 +45,6 @@ export default function Album({ results, cv }) {
               <Link href='/resume'>
                 <Button variant="contained">My Resume</Button>
               </Link>
-              {/* <CVModal cv={cv}/> */}
             </Stack>
           </Container>
         </Box>

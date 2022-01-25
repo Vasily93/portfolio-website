@@ -1,10 +1,11 @@
-import App from 'next/app';
 import AppBar from '@mui/material/AppBar';
+import App from 'next/app';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
+import { Stack } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 const theme = createTheme();
@@ -20,16 +21,20 @@ function MyApp({ Component, pageProps }) {
                         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                             Vasily Markov
                         </Typography>
-                        <Button color="inherit">
-                            <a href='https://github.com/Vasily93' target='_blank'>
-                                Github
-                            </a>
-                        </Button>
-                        <Button color="inherit">
-                            <a href='https://www.linkedin.com/in/vasily-markov/' target='_blank'>
-                                LinkedIn
-                            </a>
-                        </Button>
+                        <Stack 
+                            sx={{ pt: 1 }}
+                            direction="row"
+                            spacing={2}>
+
+                            <Button  size="small" color="inherit" variant="outlined"
+                                href="https://github.com/Vasily93"
+                                >GitHub
+                            </Button>
+                            <Button size="small" color="inherit" variant="outlined"
+                                href='https://www.linkedin.com/in/vasily-markov/'
+                                >LinkedIn
+                            </Button>
+                        </Stack>
                         </Toolbar>
                     </AppBar>
                 </Box>
@@ -38,11 +43,5 @@ function MyApp({ Component, pageProps }) {
         </div>
     )
   }
- 
-//   MyApp.getInitialProps = async (appContext) => {
-//     const appProps = await App.getInitialProps(appContext);
-  
-//     return { ...appProps }
-//   }
   
   export default MyApp;
