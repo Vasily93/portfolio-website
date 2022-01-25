@@ -14,6 +14,7 @@ const EmailForm = () => {
     const [phone, setPhone] = useState('phone')
     const [message, setMessage] = useState('message')
     const [response, setResponse] = useState('response')
+    const [severity, setSeverity] = useState('success')
     const [open, setOpen] = useState(false);
 
 
@@ -21,18 +22,20 @@ const EmailForm = () => {
         e.preventDefault();
         let config = {
             method: 'post',
-            url: 'https://vasilly-tet.netlify.app/api/contact',
+            url: 'https://vasily-m.dev/api/contact',
             headers: {
                 'Content-Type': 'application/json',
             },
             data: {subject, email, phone, message}
         }
         try {
-            const res = await axios(config);
-            setResponse('Thank you for your message!')
+            await axios(config);
+            setResponse('Thank you for your message! I will get back to you shortly :)')
+            setSeverity('success')
             setOpen(true)
         } catch(err) {
-            setResponse(`${err.response.statusText} : ${err.response.status}`)
+            setResponse(`Sorry, something went wrong. Error: ${err.response.data}`)
+            setSeverity('error')
             setOpen(true)
         }
     }
@@ -49,6 +52,7 @@ const EmailForm = () => {
             <Box sx={{ width: '100%' }}>
                 <Collapse in={open}>
                     <Alert
+                    severity={severity}
                     action={
                         <IconButton
                         aria-label="close"
@@ -73,7 +77,7 @@ const EmailForm = () => {
                     <form noValidate autoComplete="off" onSubmit={handleSubmit}>
                         <Stack sx={{ pt: 4 }} justifyContent="center" direction="column" spacing={2}>
                             <TextField onChange={(e) => setSubject(e.target.value)} id="outlined-basic" label="Subject" variant="outlined" />
-                            <TextField onChange={(e) => setEmail(e.target.value)} id="outlined-basic" label="Email" variant="outlined" />
+                            <TextField onChange={(e) => setEmail(e.target.value)} required={true} id="outlined-basic" label="Email" variant="outlined" />
                             <TextField onChange={(e) => setPhone(e.target.value)} id="outlined-basic" label="Phone" variant="outlined" />
                             <TextField onChange={(e) => setMessage(e.target.value)} id="outlined-basic" label="Your message" variant="outlined" multiline rows={5} />
                             <Button variant="contained" align="center" 

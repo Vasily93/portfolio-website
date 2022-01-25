@@ -18,7 +18,7 @@ function runMiddleware(req, res, fn) {
 async function handler(req, res) {
     const {subject, email, phone, message} = req.body;
     await runMiddleware(req, res, cors)
-    
+    console.log('inside handler here!!!!!')
     const notion = new Client({ auth: process.env.NOTION_API_KEY})
     const response = await notion.pages.create({
         parent: {
