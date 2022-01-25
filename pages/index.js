@@ -49,7 +49,6 @@ export default function Album({ results, cv }) {
           </Container>
         </Box>
         <Container sx={{ py: 8 }} maxWidth="md">
-          {/* End hero unit */}
           <Grid container spacing={4}>
             {results.map((project) => (
               <ProjectCard project={project}/>

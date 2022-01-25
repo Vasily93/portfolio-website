@@ -31,8 +31,14 @@ export default function PorjectCard(props) {
                     </Typography>
                 </CardContent>
                 <CardActions>
-                    <Button size="small"><a href={github} target='_blank'>Github</a></Button>
-                    <Button size="small"><a href={deployLink} target='_blank'>Deploy</a></Button>
+                    <Button size="small" variant="outlined"  
+                        href={github} target='_blank'
+                        >Github
+                    </Button>
+                    <Button size="small" variant="contained" 
+                        href={deployLink} target='_blank'
+                        >Live Deploy
+                    </Button>
                 </CardActions>
             </Card>
         </Grid>
