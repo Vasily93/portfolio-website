@@ -6,8 +6,7 @@
   "scripts": {
     "dev": "next",
     "duild": "next build",
-    "start": "next start",
-    "postinstall": "cp -R ./node_modules/pspdfkit/dist/pspdfkit-lib ./public"
+    "start": "next start"
   },
   "repository": {
     "type": "git",
