@@ -27,11 +27,12 @@ function MyApp({ Component, pageProps }) {
                             spacing={2}>
 
                             <Button  size="small" color="inherit" variant="outlined"
-                                href="https://github.com/Vasily93"
+                                target='_blank' href="https://github.com/Vasily93"
                                 >GitHub
                             </Button>
                             <Button size="small" color="inherit" variant="outlined"
                                 href='https://www.linkedin.com/in/vasily-markov/'
+                                target='_blank'
                                 >LinkedIn
                             </Button>
                         </Stack>

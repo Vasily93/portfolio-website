@@ -12,7 +12,6 @@ export default function PorjectCard(props) {
     const description = props.project.properties.description.rich_text[0].plain_text;
     const github = props.project.properties.github.rich_text[0].plain_text;
     const deployLink = props.project.properties.deploy.rich_text[0].plain_text;
-    // const cover = props.project.cover.file.url;
     return (
         <Grid item key={props.project.id}  xs={12} sm={6} md={4}>
             <Card sx={{ maxWidth: 345, minHeight: 345 }}>

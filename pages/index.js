@@ -40,7 +40,7 @@ export default function Album({ results, cv }) {
               justifyContent="center"
             >
               <Link href='/contact'>
-                <Button variant="contained">Send Me an Email</Button>
+                <Button variant="contained">Get in Touch</Button>
               </Link>
               <Link href='/resume'>
                 <Button variant="contained">My Resume</Button>

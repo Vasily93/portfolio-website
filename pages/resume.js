@@ -1,25 +1,38 @@
-import { Container, Typography, Link, Button, Stack } from "@mui/material"
-import PdfLoader from "../components/PdfLoader";
-import { pdfjs } from 'react-pdf';
-pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
-
+import { Container, Link, Button, Stack, Card, CardMedia } from "@mui/material";
+import { useEffect } from "react";
 
 export default function Resume() {
+    useEffect(() => {
+
+    })
     return (
-        <Container sx={{ py: 2 }} maxWidth="md">
-            <Stack 
-            textAlign='center'
-            direction="column"
+        <>
+        <Stack 
+            justifyContent='center'
+            direction="row"
             spacing={2}
+            style={{marginTop: '20px'}}
             >
                 <Link href='/'>
                         <Button variant="outlined">
                             Go back to Projects
                         </Button>
                 </Link>
-                <PdfLoader></PdfLoader>
+                <Button href='/vm.pdf' target='_blank' variant="contained">
+                    Download / Print PDF
+                </Button>
             </Stack>
+        <Container sx={{ py: 2 }} maxWidth="sm">
+            
+            <Card style={{padding: '20px', backgroundColor: 'lightgrey', margin: '0px'}}>
+                <CardMedia
+                    component='img'
+                    image='/resume.png'
+                    height='100%'
+                />
+            </Card>
         </Container>
+        </>
     )
 }
 

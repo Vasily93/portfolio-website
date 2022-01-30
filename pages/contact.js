@@ -76,10 +76,22 @@ const EmailForm = () => {
                 <CardContent>
                     <form noValidate autoComplete="off" onSubmit={handleSubmit}>
                         <Stack sx={{ pt: 4 }} justifyContent="center" direction="column" spacing={2}>
-                            <TextField onChange={(e) => setSubject(e.target.value)} id="outlined-basic" label="Subject" variant="outlined" />
-                            <TextField onChange={(e) => setEmail(e.target.value)} required={true} id="outlined-basic" label="Email" variant="outlined" />
-                            <TextField onChange={(e) => setPhone(e.target.value)} id="outlined-basic" label="Phone" variant="outlined" />
-                            <TextField onChange={(e) => setMessage(e.target.value)} id="outlined-basic" label="Your message" variant="outlined" multiline rows={5} />
+                            <TextField onChange={(e) => setSubject(e.target.value)}
+                                id="outlined-basic" label="Subject"
+                                variant="outlined" type="text" 
+                            />
+                            <TextField onChange={(e) => setEmail(e.target.value)}
+                                required={true} id="outlined-basic" label="Email"
+                                type="email" variant="outlined"
+                            />
+                            <TextField onChange={(e) => setPhone(e.target.value)}
+                                id="outlined-basic" label="Phone"
+                                type="tel" variant="outlined"
+                            />
+                            <TextField onChange={(e) => setMessage(e.target.value)}
+                                id="outlined-basic" label="Your message"
+                                variant="outlined" multiline rows={5}
+                                type="text" />
                             <Button variant="contained" align="center" 
                             onClick={handleSubmit} 
                             >Submit Form</Button>
