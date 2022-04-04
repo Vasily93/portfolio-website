@@ -18,7 +18,7 @@ export default function Resume() {
                             Go back to Projects
                         </Button>
                 </Link>
-                <Button href='/vm.pdf' target='_blank' variant="contained">
+                <Button href='/NewResume.pdf' target='_blank' variant="contained">
                     Download / Print PDF
                 </Button>
             </Stack>
@@ -27,7 +27,7 @@ export default function Resume() {
             <Card style={{padding: '20px', backgroundColor: 'lightgrey', margin: '0px'}}>
                 <CardMedia
                     component='img'
-                    image='/resume.png'
+                    image='/resumeImage.png'
                     height='100%'
                 />
             </Card>
