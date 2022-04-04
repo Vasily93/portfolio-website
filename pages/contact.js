@@ -25,6 +25,7 @@ const EmailForm = () => {
             url: 'https://vasily-m.dev/api/contact',
             headers: {
                 'Content-Type': 'application/json',
+                "Access-Control-Allow-Origin": "*"
             },
             data: {subject, email, phone, message}
         }
