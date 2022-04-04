@@ -16,7 +16,7 @@ const EmailForm = () => {
     const [response, setResponse] = useState('response')
     const [severity, setSeverity] = useState('success')
     const [open, setOpen] = useState(false);
-    const email = 'markovv.dev@gmail.com';
+    const contactEmail = 'markovv.dev@gmail.com';
 
     async function handleSubmit(e) {
         e.preventDefault();
@@ -34,7 +34,7 @@ const EmailForm = () => {
             setSeverity('success')
             setOpen(true)
         } catch(err) {
-            setResponse(`Sorry, something went wrong... You can also contact me by email: ${email}`)
+            setResponse(`Sorry, something went wrong... You can also contact me by email: ${contactEmail}`)
             console.log(err)
             setSeverity('error')
             setOpen(true)
