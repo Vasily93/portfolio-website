@@ -39,9 +39,9 @@ export default function Album({ results, cv }) {
               spacing={2}
               justifyContent="center"
             >
-              <Link href='/contact'>
+              {/* <Link href='/contact'>
                 <Button variant="contained">Get in Touch</Button>
-              </Link>
+              </Link> */}
               <Link href='/resume'>
                 <Button variant="contained">My Resume</Button>
               </Link>
@@ -51,7 +51,7 @@ export default function Album({ results, cv }) {
         <Container sx={{ py: 8 }} maxWidth="md">
           <Grid container spacing={4}>
             {results.map((project) => (
-              <ProjectCard project={project}/>
+              <ProjectCard key={project.id} project={project}/>
             ))}
           </Grid>
         </Container>
@@ -66,12 +66,7 @@ export async function getStaticProps() {
     const res = await notion.databases.query({
         database_id: databaseID,
     })
-    // const cvPageID = process.env.cvPageID;
-    // const response  = await notion.blocks.children.list({
-    //     block_id: cvPageID,
-    //     page_size: 1
-    // })
-    // console.log(response.results[0].pdf)
+    
     return {props: {
         results: res.results,
     }}
