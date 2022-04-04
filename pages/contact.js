@@ -35,6 +35,7 @@ const EmailForm = () => {
             setOpen(true)
         } catch(err) {
             setResponse(`Sorry, something went wrong. Error: ${err.response.data}`)
+            console.log(err)
             setSeverity('error')
             setOpen(true)
         }
