@@ -8,7 +8,29 @@ import Typography from '@mui/material/Typography';
 import { Stack } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
-const theme = createTheme();
+const theme = createTheme({
+    palette: {
+        type: 'light',
+        primary: {
+          main: '#0c2033',
+          light: '#296fb1',
+        },
+        secondary: {
+          main: '#2c93b7',
+        },
+        background: {
+          default: '#e0e2e8',
+          paper: '#ffffff',
+        },
+      },
+      typography: {
+        fontWeightLight: 300,
+        fontFamily: 'Droid Serif',
+        button: {
+          fontWeight: 500,
+        },
+      },
+  });
 
 function MyApp({ Component, pageProps }) {
     return (
