@@ -2,11 +2,10 @@ import AppBar from '@mui/material/AppBar';
 import App from 'next/app';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
-import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import { Stack } from '@mui/material';
+import { ButtonGroup, Typography, Box } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import Link from 'next/link';
 
 const theme = createTheme({
     palette: {
@@ -39,25 +38,21 @@ function MyApp({ Component, pageProps }) {
                 <CssBaseline />
                 <Box sx={{ flexGrow: 1 }}>
                     <AppBar position="static">
-                        <Toolbar>
-                        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                            Vasily Markov
-                        </Typography>
-                        <Stack 
-                            sx={{ pt: 1 }}
-                            direction="row"
-                            spacing={2}>
-
-                            <Button  size="small" color="inherit" variant="outlined"
-                                target='_blank' href="https://github.com/Vasily93"
-                                >GitHub
-                            </Button>
-                            <Button size="small" color="inherit" variant="outlined"
-                                href='https://www.linkedin.com/in/vasily-markov/'
-                                target='_blank'
-                                >LinkedIn
-                            </Button>
-                        </Stack>
+                        <Toolbar variant='dense'>
+                        <ButtonGroup>
+                            <Link href='/'>
+                            <Button size="small" variant="contained">Projects</Button>
+                            </Link>
+                            <Link href='/resume'>
+                            <Button size="small" variant="contained">Resume</Button>
+                            </Link>
+                            <Link href='/contact'>
+                            <Button size="small" variant="contained">Email</Button>
+                            </Link>
+                            <Link href='/about'>
+                            <Button size="small" variant="contained">About Me</Button>
+                            </Link>
+                        </ButtonGroup>
                         </Toolbar>
                     </AppBar>
                 </Box>

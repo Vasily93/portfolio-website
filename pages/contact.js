@@ -43,14 +43,6 @@ const EmailForm = () => {
     }
     return(
         <Container>
-            <Box sx={{marginTop: '10px'}}>
-                <Link href='/'>
-                        <Button variant="outlined">
-                            Go back to Projects
-                        </Button>
-                </Link>
-            </Box>
-
             <Box sx={{ width: '100%' }}>
                 <Collapse in={open}>
                     <Alert
@@ -74,7 +66,7 @@ const EmailForm = () => {
                 </Collapse>
             </Box>
 
-            <Card sx={{ maxWidth: "%100" }}>
+            <Card sx={{ maxWidth: "%100", margin: '10px'}}>
                 <CardContent>
                     <form noValidate autoComplete="off" onSubmit={handleSubmit}>
                         <Stack sx={{ pt: 4 }} justifyContent="center" direction="column" spacing={2}>
