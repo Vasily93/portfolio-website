@@ -1,9 +1,9 @@
 import AppBar from '@mui/material/AppBar';
 import App from 'next/app';
-import Button from '@mui/material/Button';
+import Transition from '../components/Transition';
 import CssBaseline from '@mui/material/CssBaseline';
 import Toolbar from '@mui/material/Toolbar';
-import { ButtonGroup, Typography, Box, Tabs, Tab } from '@mui/material';
+import { Box, Tabs, Tab } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Link from 'next/link';
 import { useState } from 'react';
@@ -33,11 +33,10 @@ const theme = createTheme({
       },
 });
 
-
 function MyApp({ Component, pageProps }) {
     const [url, setUrl] = useState('/');
-    const router = useRouter()
-    console.log(router.pathname)
+    const route = useRouter()
+    
     const handleChange = (event, newUrl) => {
         event.preventDefault()
         setUrl(newUrl);
@@ -49,7 +48,7 @@ function MyApp({ Component, pageProps }) {
                 <CssBaseline />
                 <Box sx={{ flexGrow: 1 }}>
                     <AppBar position="static">
-                        <Toolbar variant='dense'>
+                        <Toolbar variant='dense'>                        
                         <Link href={url}>
                         <Tabs value={url} indicatorColor='secondary'
                             selectionFollowsFocus={true}
@@ -65,7 +64,9 @@ function MyApp({ Component, pageProps }) {
                         </Toolbar>
                     </AppBar>
                 </Box>
-                <Component {...pageProps} />
+                <Transition>
+                    <Component {...pageProps} />
+                </Transition>
             </ThemeProvider>
         </div>
     )
