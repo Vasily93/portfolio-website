@@ -10,16 +10,16 @@ export default function Resume() {
         <Stack 
             justifyContent='center'
             direction="row"
-            spacing={2}
-            style={{marginTop: '20px'}}
+            spacing={1}
+            style={{marginTop: '5px'}}
         >
             </Stack>
         <Container sx={{ py: 0.1 }} maxWidth="sm">
-            <Card style={{padding: '20px', margin: '0px'}}>
+            <Card style={{padding: '10px', margin: '0px'}}>
                 <CardMedia
                     component='img'
                     image='/resumeImage.png'
-                    height='100%'
+                    height='50%'
                 />
             {/* <Button href='/NewResume.pdf' target='_blank' variant="contained">
                 Download / Print PDF

@@ -54,6 +54,7 @@ function MyApp({ Component, pageProps }) {
                             selectionFollowsFocus={true}
                             textColor='inherit'
                             onChange={handleChange}
+                            centered={true}
                             >
                             <Tab value='/' label='Projects' />
                             <Tab value='/resume' label='Resume'/>

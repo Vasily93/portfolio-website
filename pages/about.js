@@ -1,20 +1,19 @@
 import Link from 'next/link';
 import Button from '@mui/material/Button';
-import { Card, CardContent, Container, Stack, TextField, Box, Typography } from '@mui/material';
+import { Container, Box, Typography } from '@mui/material';
 
 const AboutMe = () => {
     
   return(
-    <Container>
+    <Container maxWidth='md'>
       <Box
       sx={{
         bgcolor: 'background.paper',
         pt: 8,
         pb: 46,
-        margin: '10px'
+        margin: '20px'
       }}
     >
-      <Container maxWidth="sm">
         <Typography
           component="h1"
           variant="h2"
@@ -28,7 +27,6 @@ const AboutMe = () => {
           I am Front End Javascript Web Developer. React Oriented. Open for oppotunities!
           Check out my latest projects below.
         </Typography>
-      </Container>
     </Box>
     </Container>
   )

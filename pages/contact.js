@@ -1,12 +1,8 @@
-import Link from 'next/link';
-import Button from '@mui/material/Button';
-import { Card, CardContent, Container, Stack, TextField } from '@mui/material';
+import { Card, CardContent, Container, Stack, TextField, Button, Box, Alert, IconButton, Collapse } from '@mui/material';
 import { useState } from 'react';
 import axios from 'axios';
-import Box from '@mui/material/Box';
-import Alert from '@mui/material/Alert';
-import IconButton from '@mui/material/IconButton';
-import Collapse from '@mui/material/Collapse';
+import emailjs from '@emailjs/browser'
+import handler from './api/contact';
 
 const EmailForm = () => {
     const [subject, setSubject] = useState('subject')
@@ -18,31 +14,31 @@ const EmailForm = () => {
     const [open, setOpen] = useState(false);
     const contactEmail = 'markovv.dev@gmail.com';
 
-    async function handleSubmit(e) {
-        e.preventDefault();
-        let config = {
-            method: 'post',
-            url: 'https://vasily-m.dev/api/contact',
-            headers: {
-                'Content-Type': 'application/json',
-                "Access-Control-Allow-Origin": "*"
-            },
-            data: {subject, email, phone, message}
-        }
-        try {
-            await axios(config);
-            setResponse('Thank you for your message! I will get back to you shortly :)')
-            setSeverity('success')
-            setOpen(true)
-        } catch(err) {
-            setResponse(`Sorry, something went wrong... You can also contact me by email: ${contactEmail}`)
-            console.log(err)
-            setSeverity('error')
-            setOpen(true)
-        }
+    function emptyForm() {
+        setEmail('')
+        setSubject('')
+        setPhone('')
+        setMessage('')
     }
+    async function handleSubmit(e) {     
+        e.preventDefault();
+        console.log('handling submit')
+        handler({subject, email, phone, message})
+            .then(result => {
+                setResponse('Thank you for your message! I will get back to you shortly :)')
+                setSeverity('success')
+                setOpen(true)
+                emptyForm()
+            } , err => {
+                console.log(err)
+                setResponse(`Sorry, something went wrong... You can also contact me by email: ${contactEmail}`)
+                setSeverity('error')
+                setOpen(true)
+            })
+    }
+
     return(
-        <Container>
+        <Container maxWidth='md'>
             <Box sx={{ width: '100%' }}>
                 <Collapse in={open}>
                     <Alert
@@ -66,26 +62,29 @@ const EmailForm = () => {
                 </Collapse>
             </Box>
 
-            <Card sx={{ maxWidth: "%100", margin: '10px'}}>
+            <Card sx={{ margin: '20px'}}>
                 <CardContent>
                     <form noValidate autoComplete="off" onSubmit={handleSubmit}>
                         <Stack sx={{ pt: 4 }} justifyContent="center" direction="column" spacing={2}>
                             <TextField onChange={(e) => setSubject(e.target.value)}
                                 id="outlined-basic" label="Subject"
                                 variant="outlined" type="text" 
+                                value={subject}
                             />
                             <TextField onChange={(e) => setEmail(e.target.value)}
                                 required={true} id="outlined-basic" label="Email"
                                 type="email" variant="outlined"
+                                value={email}
                             />
                             <TextField onChange={(e) => setPhone(e.target.value)}
                                 id="outlined-basic" label="Phone"
                                 type="tel" variant="outlined"
+                                value={phone}
                             />
                             <TextField onChange={(e) => setMessage(e.target.value)}
                                 id="outlined-basic" label="Your message"
                                 variant="outlined" multiline rows={5}
-                                type="text" />
+                                type="text" value={message} />
                             <Button variant="contained" align="center" 
                             onClick={handleSubmit} 
                             >Submit Form</Button>
