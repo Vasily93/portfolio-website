@@ -32,9 +32,9 @@ const AboutMe = () => {
         Vasily Markov
       </Typography>
       <Typography variant="h5" align="center" color="text.secondary" paragraph>
-        I am Front-end Javascript Web Developer, React Oriented. I am pacinate to 
-        create solutions for businesses and automate processes. 
-        Open for oppotunities!
+      I am Front-end Javascript Web Developer, React Oriented. 
+      I am passionate to create solutions for businesses and automate processes. 
+      Open for opportunities!
       </Typography>
       <Container sx={{ width: '185px' }}>
         <Stack direction='row' maxWidth='sm' spacing={2}>
